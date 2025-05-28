@@ -1,0 +1,48 @@
+# Module Developer's Perspective
+# Smaller code modules, specific purpose, easier to write, debug, test, and understand
+
+mylib/
+  __init__.py
+  submod1.py    # function to be exported
+  submod2.py
+  subpack1
+    __init__.py
+    pack1mod1.py
+    pack1mod2.py # class to be exported
+
+
+# Module User's Perspective
+# User should not have to write:
+#    from mylib.submod1 import my_func
+#    from mylib.subpack1.pack1mod2 import myClass
+# Much easier for user if they could write:
+#    from mylib import my_func, myClass
+# or, simply:
+#    import mylib
+#    mylib.my_func(), mylib.MyClass()
+
+mylib/
+  __init__.py
+  submod1.py    # function to be exported for user lives here
+  submod2.py
+  subpack1
+    __init__.py
+    pack1mod1.py
+    pack1mod2.py # class to be exported for user lives here
+
+# Using __init__.py
+# We can use packages' __init__.py code to export (expose) just what's needed by our users
+# Example:
+
+mylib/
+  __init__.py:
+  from mylib.submod1 import my_func
+  from mylib.subpack1.pack1mod2 import MyClass
+
+ # User uses it this way:
+ import mylib
+
+ mylib.my_func()
+ mylib.myClass()
+# the internal implementation is "hidden"
+
