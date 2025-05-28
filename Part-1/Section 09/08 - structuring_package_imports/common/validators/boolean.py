@@ -1,5 +1,7 @@
 # boolean.py
 
+__all__ = ['is_boolean']
+
 def is_boolean(arg):
     pass
 

@@ -1,17 +1,16 @@
 # main.py
 
-import common.validators.boolean
-import common.validators.date
-import common.validators.json
-# import common.validators.numeric
-from common.validators.numeric import is_integer, is_numeric
 import common.validators as validators
+import common
 
-common.validators.json.is_json('{}')
-common.validators.date.is_date('2018-01-01')
+# from common.validators import * # not recommended
 
-validators.numeric.is_numeric(10)
-validators.numeric.is_integer('100')
+validators.is_boolean('True')
+validators.is_json('{}')
+validators.is_numeric(10)
+validators.is_date('1-1-2025')
+
+
 
 print('main.py executed')
 
@@ -24,9 +23,9 @@ for k in common.__dict__.keys():
     print(k)
 
 print('\n\n***** validators *****')
-for k in common.validators.__dict__.keys():
+for k in validators.__dict__.keys():
     print(k)
 
-print('\n\n***** numeric *****')
-for k in common.validators.numeric.__dict__.keys():
-    print(k)
+# print('\n\n***** numeric *****')
+# for k in validators.numeric.__dict__.keys():
+#     print(k)
